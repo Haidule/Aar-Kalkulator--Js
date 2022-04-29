@@ -1,0 +1,54 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="styles.css">
+
+<script>
+function ageCalculator() {
+    var userinput = document.getElementById("DOB").value;
+    var dob = new Date(userinput);
+    if(userinput==null || userinput=='') {
+      document.getElementById("message").innerHTML = "Velg Dato!";
+      return false;
+    } else {
+
+    //beregn månedsforskjell fra gjeldende dato i tid
+    var month_diff = Date.now() - dob.getTime();
+
+    //konverter den beregnede forskjellen i datoformat
+    var age_dt = new Date(month_diff);
+
+    //trekk ut år fra dato
+    var year = age_dt.getUTCFullYear();
+
+    //beregn nå alderen til brukeren
+    var age = Math.abs(year - 1970);
+
+    //vise den beregnede alderen
+    return document.getElementById("result").innerHTML =
+             "Age is: " + age + " years. ";
+    }
+}
+</script>
+</head>
+<body>
+<center>
+  <div class="overskrift">
+    <h2 style="color: Black" align="center"> Beregn alder fra fødselsdato <br> <br> </h2>
+  </div>
+
+<img src="img/dexter.png" alt="dexter!">
+
+<div class="box1">
+  <!-- Velg en dato og skriv inn i inntastingsfeltet -->
+  <b> Skriv inn fødsels dato: <input type=date id = DOB> </b>
+  <span id = "message" style="color:white"> </span> <br><br>
+</div>
+
+
+<!-- Velg en dato og skriv inn i inntastingsfeltet -->
+<button type="submit" onclick = "ageCalculator()"> Kalkuler </button> <br><br>
+<h3 style="color:Black" id="result" align="center"></h3>
+</center>
+</body>
+</html>
